@@ -1,6 +1,3 @@
-# CI-CD-Pipeline
-🚀 **CI/CD Pipeline with Jenkins, Docker, and AWS** 🐳   Automates Node.js app deployment using **Jenkins**, **Docker**, and **AWS EC2**. Pulls code from GitHub, builds Docker images, and runs containers for consistent testing. 🤖☁️   💡 Features: GitHub integration, Dockerized app, and Jenkins automation. Fork &amp; contribute! 🔧
-
 # CI/CD Pipeline Overview
 
 This repository demonstrates the setup of a CI/CD pipeline using **Jenkins**, **Docker**, **AWS EC2**, and **GitHub**. Below is a detailed overview of the components and their interactions, as illustrated in the architecture diagram.
@@ -12,33 +9,35 @@ This repository demonstrates the setup of a CI/CD pipeline using **Jenkins**, **
 1. **AWS EC2 Instance**
    - An Ubuntu-based EC2 instance serves as the primary server.
    - Jenkins and Docker are installed and configured on this instance.
+   - Acts as the central hub for the CI/CD pipeline operations.
 
 2. **GitHub**
    - Serves as the source code repository.
    - Code changes are pushed here and automatically trigger the pipeline.
+   - Ensures version control and collaborative development.
 
 3. **Jenkins**
    - Installed on the EC2 instance.
    - Orchestrates the entire CI/CD pipeline.
    - Listens to changes in the GitHub repository and triggers builds.
+   - Executes shell commands for Docker operations.
 
 4. **Docker**
    - Installed on the EC2 instance.
    - Used for containerization of the application.
    - Builds Docker images and runs Docker containers.
-
-5. **Local Machine**
-   - Windows-based local machine to access Jenkins via its public IP and manage the pipeline.
-   - Provides access to directories using Jenkins paths.
+   - Provides consistent and isolated testing environments.
 
 ### Detailed Workflow
 
 1. **GitHub Credentials and Repository Setup**
    - GitHub credentials are configured in Jenkins.
    - The repository is cloned into the Linux VM (Ubuntu-based EC2 instance).
+   - Ensures the latest code is always available for the pipeline.
 
 2. **Run Node.js Application**
-   - The Node.js application is run manually from the Linux VM to verify initial setup.
+   - The Node.js application is run manually from the Linux VM to verify the initial setup.
+   - Confirms that the code is functional before automation.
 
 3. **Testing in Different Environments Using Docker**
    - Docker is initially used to manually build and run the application.
@@ -56,9 +55,11 @@ This repository demonstrates the setup of a CI/CD pipeline using **Jenkins**, **
        docker build . -t my-node-app-todo
        docker run -d --name my-node-app-container -p 8000:8000 my-node-app-todo
        ```
+   - Reduces manual effort and ensures consistent builds.
 
 5. **Process Automation**
    - The entire process, from pulling code from GitHub to deploying the Node.js application in Docker containers, is automated using Jenkins.
+   - Improves efficiency and minimizes human intervention.
 
 6. **Access Jenkins and Application**
    - Jenkins is accessible via a public IP (e.g., `54.159.144.81:8080`).
